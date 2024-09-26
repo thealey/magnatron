@@ -1,0 +1,21 @@
+<%= render @timesheet %>
+
+<div class="pt-5 pb-3">
+<%= link_to "New timesheet item", 
+  new_timesheet_item_path(timesheet_id: @timesheet.id), 
+  class: "btn btn-primary btn-small", method: "get" %>
+</div>
+
+<%= render "timesheet_items/timesheet_item_table", locals: { timesheet_items: @timesheet_items }  %>
+
+<hr/>
+<h3>Summary</h3>
+    <%= @timesheet.description %>
+
+<hr/>
+<div>
+  <%= link_to "Edit this timesheet", edit_timesheet_path(@timesheet) %> |
+  <%= link_to "Back to timesheets", timesheets_path %> | 
+  <%= link_to "Invoice", invoice_timesheet_path(id: @timesheet.id) %> | 
+  <%= link_to "Destroy this timesheet", @timesheet, method: :delete %>
+</div>

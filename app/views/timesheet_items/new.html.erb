@@ -1,0 +1,11 @@
+<% content_for :title, "New timesheet item: " + @timesheet.name %>
+
+<h1>New timesheet item: <%= @timesheet.slug %></h1>
+
+<%= render "form", timesheet_item: @timesheet_item %>
+
+<br>
+
+<div>
+  <%= link_to "Back to timesheet items", timesheet_items_path %>
+</div>

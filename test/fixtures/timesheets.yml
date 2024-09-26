@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  client_id: 1
+  submitted: false
+  paid: false
+  submitted_date: 2024-09-18
+  description: MyText
+
+two:
+  user_id: 1
+  client_id: 1
+  submitted: false
+  paid: false
+  submitted_date: 2024-09-18
+  description: MyText

@@ -1,0 +1,6 @@
+<%= render @balance %>
+
+<div>
+  <%= link_to "Edit this balance", edit_balance_path(@balance) %>
+  <%= button_to "Delete this balance", @balance, method: :delete %>
+</div>

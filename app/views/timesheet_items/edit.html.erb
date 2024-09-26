@@ -1,0 +1,12 @@
+<% content_for :title, "Editing timesheet item" %>
+
+<h1>Editing timesheet item</h1>
+
+<%= render "form", timesheet_item: @timesheet_item %>
+
+<br>
+
+<div>
+  <%= link_to "Show this timesheet item", @timesheet_item %> |
+  <%= link_to "Back to timesheet items", timesheet_items_path %>
+</div>

@@ -1,0 +1,32 @@
+<table class="table table-striped" id="timesheets">
+  <thead>
+    <tr>
+      <th>Timesheet</th>
+      <th>Date</th>
+      <th>Hours</th>
+      <th>Rate</th>
+      <th>Total</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @timesheet_items.each do |timesheet_item| %>
+    <tr>
+      <td><%= link_to timesheet_item.timesheet.slug, timesheet_item.timesheet %></td>
+      <td><%= br_date timesheet_item.item_date %></td>
+      <td><%= link_to timesheet_item.hours.to_s, timesheet_item %></td>
+      <td><%= timesheet_item.rate %></td>
+      <td><%= timesheet_item.item_sum %></td>
+      <td><%= timesheet_item.comment %></td>
+    </tr>    
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+new DataTable('#timesheets', {
+    order: [[1, 'asc']]
+});  });
+</script>

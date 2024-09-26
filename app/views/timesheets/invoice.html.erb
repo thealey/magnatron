@@ -1,0 +1,79 @@
+<div class="container pt-5 pb-5" style="font-size: 80%;">
+  <div class="row gx-10">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 1rem;"><%= current_user.full_name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= current_user.address %></li>
+          <li class="list-group-item"><%= current_user.cell %></li>
+          <li class="list-group-item">www.clypso.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 1rem;"><%= @timesheet.client.name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= @timesheet.client.contact %></li>
+          <li class="list-group-item"><%= @timesheet.client.address %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 1rem;">Invoice: <%= @timesheet.invoice_number.to_s %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= @timesheet.submitted_date.to_formatted_s(:long) %></li>
+          <li class="list-group-item">Hours: <%= @timesheet.total_hours %></li>
+          <li class="list-group-item">Rate: <%= br_dollar @timesheet.client.default_rate %></li>
+          <li class="list-group-item">Total: <%= br_dollar @timesheet.timesheet_sum %></li>
+        </ul>
+       </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 1rem;">Bank Info</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Account #: <%= current_user.account_number %></li>
+          <li class="list-group-item">Routing #: <%= current_user.routing_number %></li>
+        </ul>
+      </div>
+  </div>
+</div>
+</div>
+
+<% render "timesheet_items/timesheet_item_table", locals: { timesheet_items: @timesheet_items }  %>
+
+<table class="table table-striped" id="timesheets">
+  <thead>
+    <tr>
+      <th>Timesheet</th>
+      <th>Date</th>
+      <th>Hours</th>
+      <th>Rate</th>
+      <th>Total</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @timesheet_items.each do |timesheet_item| %>
+    <tr>
+      <td><%= link_to timesheet_item.timesheet.slug, timesheet_item.timesheet %></td>
+      <td><%= br_date timesheet_item.item_date %></td>
+      <td><%= link_to timesheet_item.hours.to_s, timesheet_item %></td>
+      <td><%= timesheet_item.rate %></td>
+      <td><%= timesheet_item.item_sum %></td>
+      <td><%= timesheet_item.comment %></td>
+    </tr>    
+  <% end %>
+  </tbody>
+</table>

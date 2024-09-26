@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timesheet_id: 1
+  item_date: 2024-09-18
+  hours: 1.5
+  comment: MyText
+  rate: 1
+
+two:
+  timesheet_id: 1
+  item_date: 2024-09-18
+  hours: 1.5
+  comment: MyText
+  rate: 1

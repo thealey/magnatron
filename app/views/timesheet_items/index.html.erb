@@ -1,0 +1,4 @@
+<%= render "timesheet_item_table", locals: { timesheet_items: @timesheet_items } %>
+
+<%= line_chart @timesheet_items.group_by_day(:item_date).sum(:hours) %>
+

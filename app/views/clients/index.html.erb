@@ -1,0 +1,23 @@
+<% content_for :title, "Clients" %>
+
+<h1>Clients</h1>
+
+<table class="table" id="datafiles">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% Client.all.each do |client| %>
+    <tr>
+      <td><%= link_to client.name, client %></td>
+      <td><%= client.default_rate.to_s %></td>
+    </tr>    
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New client", new_client_path %>

@@ -1,0 +1,7 @@
+<%= render @timesheet_item %>
+
+<div>
+  <%= link_to "Edit this timesheet item", edit_timesheet_item_path(@timesheet_item) %> |
+  <%= link_to "Back to timesheet items", timesheet_items_path %> | 
+  <%= link_to "Destroy this timesheet item", @timesheet_item, method: :delete %>
+</div>

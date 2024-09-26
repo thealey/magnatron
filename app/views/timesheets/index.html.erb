@@ -1,0 +1,57 @@
+<h1><%= @status.titleize %> Timesheets</h1>
+
+<% sum = @timesheets.collect{|ts| ts.timesheet_sum}.sum %>
+
+<table class="table table-striped" id="timesheets">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Name</th>
+      <th>Hours</th>
+      <th>Status</th>
+      <th>Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @timesheets.each do |timesheet| %>
+    <tr>
+      <td><%= link_to timesheet.client.name, timesheet.client %></td>
+      <td><%= link_to timesheet_name(timesheet), timesheet %></td>
+      <td><%= timesheet.total_hours %></td>
+      <td><%= timesheet.status.titleize %></td>
+      <td><%= timesheet.timesheet_sum %></td>
+    </tr>    
+  <% end %>
+    <tr class="">
+      <td></td>
+      <td></td>
+      <td><%= @timesheets.collect{|ts| ts.total_hours}.sum %></td>
+      <td></td>
+      <td><%= sum %></td>
+    </tr>    
+  </tbody>
+</table>
+
+
+
+<table class="table table-striped" id="timesheets">
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th>Tax</th>
+      <th>Net</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="">
+      <td><%= sum %></td>
+      <td><%= sum.to_f * 0.35 %></td>
+      <td><%= sum - (sum.to_f * 0.35) %></td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New timesheet", new_timesheet_path %>
+
